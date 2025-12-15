@@ -6,7 +6,7 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: https://github.com/<SENIN_REPO>/k8s-gitops
+    repoURL: https://github.com/ilkerd93/Local-Kubernetes-Setup
     targetRevision: main
     path: apps
   destination:
