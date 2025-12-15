@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend
+  namespace: app-backend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: backend
+  template:
+    metadata:
+      labels:
+        app: backend
+    spec:
+      containers:
+        - name: backend
+          image: backend:local
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 3000
+          env:
+            - name: MONGO_URL
+              value: mongodb.data-mongodb.svc.cluster.local:27017
+            - name: REDIS_HOST
+              value: redis.data-redis.svc.cluster.local
+            - name: RABBITMQ_HOST
+              value: rabbitmq.data-rabbitmq.svc.cluster.local

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Frontend</title>
+</head>
+<body>
+  <h1>Frontend OK</h1>
+  <button onclick="callApi()">Call Backend</button>
+  <pre id="result"></pre>
+
+  <script>
+    function callApi() {
+      fetch('http://api.local/config')
+        .then(r => r.json())
+        .then(d => {
+          document.getElementById('result').innerText =
+            JSON.stringify(d, null, 2);
+        });
+    }
+  </script>
+</body>
+</html>
