@@ -1,0 +1,23 @@
+name: CI
+
+on:
+  push:
+    branches: [ "main" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Build backend image
+        run: |
+          docker build -t backend:${{ github.sha }} backend
+
+      - name: Build frontend image
+        run: |
+          docker build -t frontend:${{ github.sha }} frontend
+
+      # LOCAL olduğu için registry push YOK
+      # Prod’da burada ACR / ECR push olur
